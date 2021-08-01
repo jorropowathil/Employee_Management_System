@@ -1,5 +1,6 @@
 const inquirer = require('inquirer');
 const table = require('./table_data');
+// const importFunctions = require('./functions');
 
 async function startQuestions(){
     inquirer.prompt([{
@@ -9,17 +10,25 @@ async function startQuestions(){
         name: 'title',
         choices: [
             {name: "View all departments"},
-            {name: "View all roles"},
-            {name: "View all employees"},
             {name: "Add a department"},
+            {name: "View all roles"},
             {name: "Add a role"},
-            {name: "Update employee role"}
+            {name: "View all employees"},
+            {name: "Update employee role"},
+            {name: "Add an employee"},   
+            {name: "Quit"}
         ]}])
         .then ((response) => {
-            console.log(response.title);
-            table.createTable(response);
-
-            // }})}
+            const obj = {}
+            switch(response.title){
+                case 'Add a department':
+                    addDepartment();
+                case 'Add a role':
+                case 'Update employee role':
+                case 'Add an employee':
+                case 'Quit':
+                    console.log('See you next time!');
+            }
         })}
 
 module.exports = {startQuestions}

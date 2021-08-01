@@ -5,7 +5,7 @@ const express = require('express');
 const inquirer = require('inquirer');
 
 // Require other pages that will be used
-const mainMenu = require('./library/questions')
+const mainMenu = require('./library/questions');
 
 // Port & Express
 const PORT = process.env.PORT || 3001;
