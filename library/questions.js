@@ -22,7 +22,7 @@ async function startQuestions(){
             const obj = {}
             switch(response.title){
                 case 'Add a department':
-                    addDepartment();
+                    addDepartment(obj.name);
                 case 'Add a role':
                 case 'Update employee role':
                 case 'Add an employee':
