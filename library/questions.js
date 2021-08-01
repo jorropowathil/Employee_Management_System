@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const table = require('./table_data');
-// const importFunctions = require('./functions');
+const functions = require('./functions');
+
 
 async function startQuestions(){
     inquirer.prompt([{
@@ -22,12 +23,12 @@ async function startQuestions(){
             const obj = {}
             switch(response.title){
                 case 'Add a department':
-                    addDepartment(obj.name);
+                    functions.addDepartment();
                 case 'Add a role':
+                    functions.addRole();
                 case 'Update employee role':
                 case 'Add an employee':
                 case 'Quit':
-                    console.log('See you next time!');
             }
         })}
 

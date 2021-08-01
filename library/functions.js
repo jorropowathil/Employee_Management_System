@@ -1,12 +1,12 @@
 // Required
 const inquirer = require('inquirer');
 const table = require('./table_data');
-const mainMenu = require('./library/questions');
+// const mainMenu = require('./library/questions');
+
 
 
 async function addDepartment(){
-    console.log("this is working up to here!");
-    const response = 'Add Department';
+    const response = 'Add a department';
     const name = await inquirer.prompt({
         type: 'input',
         name: 'departmentName',
@@ -15,9 +15,35 @@ async function addDepartment(){
     newDepartment = {
         name : name.departmentName,
     }
+    console.log(newDepartment);
     table.createTable(response, newDepartment);
-    mainMenu();
+}
+
+async function addRole(){
+    console.log('Add role stuff!');
+    const response = 'Add a role';
+    const nameOfRole = await inquirer.prompt({
+        type: 'input',
+        name: 'nameOfRole',
+        message: 'Name of the role:'
+    })
+    const salary = await inquirer.prompt({
+        type: 'input',
+        name: 'salary',
+        message: 'Salary paid:'
+    })
+    const department_id = await inquirer.prompt({
+        type: 'input',
+        name: 'departmentId',
+        message: 'Enter the department ID for the role:'
+    })
+    const newRole = {
+        title: nameOfRole.nameOfRole,
+        salary: salary.salary,
+        department_id: department_id.departmentId
+    }
+    table.createTable(response, newRole);
 }
 
 
-module.exports = {addDepartment}
+module.exports = {addDepartment, addRole}
