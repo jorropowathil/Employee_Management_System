@@ -27,7 +27,9 @@ async function startQuestions(){
                 case 'Add a role':
                     functions.addRole();
                 case 'Update employee role':
+                    functions.updateRole();
                 case 'Add an employee':
+                    functions.addEmployee();
                 case 'Quit':
             }
         })}

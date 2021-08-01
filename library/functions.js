@@ -45,5 +45,39 @@ async function addRole(){
     table.createTable(response, newRole);
 }
 
+async function updateRole(){
+    console.log('Update role stuff!');
+    const response = 'Update a role';
+    const selectEmployee = await inquirer.prompt({
+        type: 'input',
+        name: 'selectEmployee',
+        message: 'Input the employee by ID to update:'
+    })
+    const newID = await inquirer.prompt({
+        type: 'input',
+        name: 'newID',
+        message: 'Input the new employee ID:'
+    })
+    const updatedEmployee = {
+        selectEmployee: selectEmployee.selectEmployee,
+        newID: newID.newID
+    }
+    table.createTable(response, updatedEmployee);
+}
 
-module.exports = {addDepartment, addRole}
+async function addEmployee(){
+    console.log("add employee here!");
+    const response = 'Add an employee';
+    const firstName = await inquirer.prompt({
+        type: 'input',
+        name: 'firstName',
+        message: 'Enter new employees first name:',
+    })
+    const lastName = await inquirer.prompt({
+        type: 'input',
+        name: 'lastName',
+        message: 'Enter new employees last name:',
+    })
+    
+}
+module.exports = {addDepartment, addRole, updateRole}
