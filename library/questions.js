@@ -22,22 +22,6 @@ async function startQuestions(){
         ]}])
         .then ((response) => {
             switch(response.title){
-                case 'Add a department':
-                    functions.addDepartment();
-                    startQuestions();
-                break;
-                case 'Add a role':
-                    functions.addRole();
-                    startQuestions();
-                break;
-                case 'Update employee role':
-                    functions.updateRole();
-                    startQuestions();
-                break;
-                case 'Add an employee':
-                    functions.addEmployee();
-                    startQuestions();
-                break;
                 case 'View all departments':
                     console.log('List of departments');
                     db.query(`
@@ -47,10 +31,24 @@ async function startQuestions(){
                         if (err) {
                             console.log(err);
                         }
+                        console.log(' ');
                         console.table(results);
                     })
                     startQuestions();
                 break;
+                case 'Add a department':
+                    functions.addDepartment();
+                break;
+                case 'Add a role':
+                    functions.addRole();
+                break;
+                case 'Update employee role':
+                    functions.updateRole();
+                break;
+                case 'Add an employee':
+                    functions.addEmployee();
+                break;
+                
                 case 'View all roles':
                     console.log('List of roles');
                     db.query(`SELECT role.department_id AS ID, department.name AS Department, title AS Title, salary AS Salary 
@@ -62,6 +60,7 @@ async function startQuestions(){
                         if (err) {
                             console.log(err);
                         }
+                        console.log(' ');
                         console.table(results);
                     })
                     startQuestions();
@@ -79,6 +78,7 @@ async function startQuestions(){
                             if (err) {
                             console.log(err);
                             }
+                            console.log(' ');
                             console.table(results);
                         })
                         startQuestions();
