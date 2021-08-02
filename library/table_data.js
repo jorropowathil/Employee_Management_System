@@ -1,30 +1,15 @@
 const db = require('./connection');
+const inquirer = require('inquirer');
 
 async function createTable(response, obj){
     console.log(response);
     switch(response) {
         // DEPARTMENT CASES
-        // View all departments
-        case 'View all departments':
-            db.query(`SELECT department.id AS ID, name AS Department FROM department;`)
-            console.table(results);
-            break;
-
         // Add a department case
         case 'Add a department':
             console.log("random stuff here!");
             db.query(`INSERT INTO department (name)
             VALUES ("${obj.name}");`,)
-            break;
-
-        // View all roles case
-        case 'View all roles':
-            console.log('View all roles stuff ');
-            db.query(`SELECT role.department_id AS ID, department.name AS Department, title AS Title, salary AS Salary 
-            FROM role
-            INNER JOIN department
-            ON role.id = department.id;
-            `)
             break;
 
         // Add a role case 
@@ -40,25 +25,7 @@ async function createTable(response, obj){
             db.query(`UPDATE employee SET role_id = ${obj.newID} WHERE id = ${obj.selected_employee};`)
             break;
 
-
         // EMPLOYEES CASES
-        // View all employees
-        case 'View all employees':
-            db.query(`
-            SELECT employee.id AS ID, CONCAT(first_name, ' ', last_name) AS Name, title AS Title, department.name AS Department, salary AS Salary, manager_id AS Manager_ID
-            FROM employee 
-            INNER JOIN role 
-            ON role.id = employee.role_id 
-            INNER JOIN department 
-            ON role.department_id = department.id;`,
-                function(err, results) {
-                    if (err) {
-                        console.log(err);
-                    }
-                    console.log('');
-                    console.table(results);
-            })
-            break;
             // Add an employee
             case 'Add an employee':
                 db.query(`
@@ -69,4 +36,4 @@ async function createTable(response, obj){
 }}
 
 
-module.exports = {createTable}
+module.exports = {createTable};

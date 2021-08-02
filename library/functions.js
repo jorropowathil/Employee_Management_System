@@ -1,11 +1,13 @@
 // Required
 const inquirer = require('inquirer');
 const table = require('./table_data');
+const questions = require('./questions');
 // const mainMenu = require('./library/questions');
 
 
 
 async function addDepartment(){
+    console.log("add a department stuff here!");
     const response = 'Add a department';
     const name = await inquirer.prompt({
         type: 'input',
@@ -17,10 +19,10 @@ async function addDepartment(){
     }
     console.log(newDepartment);
     table.createTable(response, newDepartment);
+    // questions.startQuestions();
 }
 
 async function addRole(){
-    console.log('Add role stuff!');
     const response = 'Add a role';
     const nameOfRole = await inquirer.prompt({
         type: 'input',
@@ -46,7 +48,6 @@ async function addRole(){
 }
 
 async function updateRole(){
-    console.log('Update role stuff!');
     const response = 'Update a role';
     const selectEmployee = await inquirer.prompt({
         type: 'input',
@@ -66,7 +67,6 @@ async function updateRole(){
 }
 
 async function addEmployee(){
-    console.log("add employee here!");
     const response = 'Add an employee';
     const firstName = await inquirer.prompt({
         type: 'input',
@@ -86,13 +86,13 @@ async function addEmployee(){
     const managerID = await inquirer.prompt({
         type: 'input',
         name: 'managerID',
-        message: "Enter employee's manger ID"
+        message: "Enter employee's manager ID"
     })
     const newEmployee = {
         firstName: firstName.firstName,
         lastName: lastName.lastName,
         roleID: roleID.roleID,
-        managerID: managerID.managerID
+        managerID: managerID.managerID,
     }
     table.createTable(response, newEmployee);
 }
