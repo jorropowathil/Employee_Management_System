@@ -7,13 +7,14 @@ async function createTable(response, obj){
         // View all departments
         case 'View all departments':
             db.query(`SELECT department.id AS ID, name AS Department FROM department;`)
+            console.table(results);
             break;
 
         // Add a department case
         case 'Add a department':
             console.log("random stuff here!");
             db.query(`INSERT INTO department (name)
-            VALUES ("${obj.name}");`)
+            VALUES ("${obj.name}");`,)
             break;
 
         // View all roles case
