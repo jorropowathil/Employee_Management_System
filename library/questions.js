@@ -24,15 +24,19 @@ async function startQuestions(){
             switch(response.title){
                 case 'Add a department':
                     functions.addDepartment();
+                    startQuestions();
                 break;
                 case 'Add a role':
                     functions.addRole();
+                    startQuestions();
                 break;
                 case 'Update employee role':
                     functions.updateRole();
+                    startQuestions();
                 break;
                 case 'Add an employee':
                     functions.addEmployee();
+                    startQuestions();
                 break;
                 case 'View all departments':
                     console.log('List of departments');
@@ -45,6 +49,7 @@ async function startQuestions(){
                         }
                         console.table(results);
                     })
+                    startQuestions();
                 break;
                 case 'View all roles':
                     console.log('List of roles');
